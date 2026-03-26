@@ -5,12 +5,10 @@
 package Datos;
 import java.sql.*;
 import javax.swing.JOptionPane;
-/**
- *
- * @author MegaByte
- */
+
+
 public class Conexion {
-    String url = "jbdc:mysql://localhost:3306/sistemaacademico";
+    String url = "jdbc:mysql://localhost:3306/sistemaacademico";
     String user = "root";
     String password = "Desarrollo123";
     

@@ -8,7 +8,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
-        <exec.mainClass>com.company.sistemaacademico.SistemaAcademico</exec.mainClass>
+        <exec.mainClass>Logica.Principal</exec.mainClass>
     </properties>
     <dependencies>
         <!--  Dependencia del conector JDBC de MySQL  -->
