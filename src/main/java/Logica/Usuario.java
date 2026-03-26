@@ -9,7 +9,7 @@ package Logica;
  * @author MegaByte
  */
 public class Usuario {
-    private int id_usuario;
+    private int cedula;
     private String nombreCompleto;
     private String correoElectronico;
     private String contrasena;
@@ -17,7 +17,7 @@ public class Usuario {
     private Roles rol;
 
     public Usuario(int id_usuario, String nombreCompleto, String correoElectronico, String contrasena, boolean activo, Roles rol) {
-        this.id_usuario = id_usuario;
+        this.cedula = id_usuario;
         this.nombreCompleto = nombreCompleto;
         this.correoElectronico = correoElectronico;
         this.contrasena = contrasena;
@@ -34,11 +34,11 @@ public class Usuario {
     }
 
     public int getId_usuario() {
-        return id_usuario;
+        return cedula;
     }
 
     public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+        this.cedula = id_usuario;
     }
 
     public String getNombreCompleto() {

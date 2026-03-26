@@ -11,9 +11,9 @@ package Logica;
 public class Estudiante extends Usuario{
     private double promedio;
     
-    public Estudiante(double promedio, int id_usuario, String nombreCompleto, String correoElectronico, String contrasena, boolean activo, Roles rol) {
+    public Estudiante(int id_usuario, String nombreCompleto, String correoElectronico, String contrasena, boolean activo, Roles rol) {
         super(id_usuario, nombreCompleto, correoElectronico, contrasena, activo, rol);
-        this.promedio = promedio;
+        this.promedio = 0;
     }
 
     public double getPromedio() {
@@ -23,5 +23,6 @@ public class Estudiante extends Usuario{
     public void setPromedio(double promedio) {
         this.promedio = promedio;
     }
+    
     
 }
