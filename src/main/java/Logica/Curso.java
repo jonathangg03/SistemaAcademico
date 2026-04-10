@@ -11,21 +11,22 @@ import Datos.Conexion;
  * @author MegaByte
  */
 public class Curso {
-    private int codigo;
+    private int cedulaDocente;
     private String nombreCurso;
     
     public Curso(){};
 
-    public Curso(String nombreCurso) {
+    public Curso(String nombreCurso, int cedulaDocente) {
         this.nombreCurso = nombreCurso;
+        this.cedulaDocente = cedulaDocente;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getCedulaDocente() {
+        return cedulaDocente;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCedulaDocente(int cedulaDocente) {
+        this.cedulaDocente = cedulaDocente;
     }
 
     public String getNombreCurso() {
@@ -40,10 +41,11 @@ public class Curso {
     {
       Conexion conectar= new Conexion();
        try {
-           String sql = "INSERT INTO curso (nombre) VALUES (?)";
+           String sql = "INSERT INTO curso (nombre, cedulaDocente) VALUES (?, ?)";
     
             PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql); 
             pstmt.setString(1, getNombreCurso());
+            pstmt.setInt(2, getCedulaDocente());
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(null,
             "Se ha almacenado el curso", "INFORMACION",

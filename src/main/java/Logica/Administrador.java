@@ -14,15 +14,16 @@ import javax.swing.JOptionPane;
  * @author dgarcia
  */
 public class Administrador extends Usuario {
+    public Administrador(){};
     
-    public Administrador(int id_usuario, String nombreCompleto, String correoElectronico, String contrasena, boolean activo, Roles rol) {
-        super(id_usuario, nombreCompleto, correoElectronico, contrasena, activo, rol);
+    public Administrador(int cedula, String nombreCompleto, String correoElectronico, String contrasena, boolean activo, Roles rol) {
+        super(cedula, nombreCompleto, correoElectronico, contrasena, activo, rol);
     }
 
     public void Agregar() {
         Conexion conectar = new Conexion();
         try {
-            String sql = "INSERT INTO usuario (cedulaDocente) VALUES (?)";
+            String sql = "INSERT INTO admin (cedulaAdmin) VALUES (?)";
 
             PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql);
             pstmt.setInt(1, getCedula());

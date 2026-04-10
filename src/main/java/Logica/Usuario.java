@@ -19,6 +19,8 @@ public class Usuario {
     private String correoElectronico;
     private String contrasena;
 
+    public Usuario(){};
+    
     public Usuario(int id_usuario, String nombreCompleto, String correoElectronico, String contrasena, boolean activo, Roles rol) {
         this.cedula = id_usuario;
         this.nombreCompleto = nombreCompleto;

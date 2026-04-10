@@ -4,39 +4,43 @@
  */
 package Logica;
 
+import Datos.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MegaByte
  */
 public class Asignacion {
-    private int codigo;
-    private int codigoEstudiante;
     private int codigoCurso;
-    private int codigoDocente;
+    private int cedulaEstudiante;
     private int notaEstudiante;
+    private int asistencia;
+    
 
-    public Asignacion(int codigo, int codigoEstudiante, int codigoCurso, int codigoDocente, int notaEstudiante) {
-        this.codigo = codigo;
-        this.codigoEstudiante = codigoEstudiante;
+    public Asignacion(int codigo, int cedulaEstudiante, int codigoCurso, int codigoDocente, int notaEstudiante) {
+        this.asistencia = codigo;
+        this.cedulaEstudiante = cedulaEstudiante;
         this.codigoCurso = codigoCurso;
-        this.codigoDocente = codigoDocente;
         this.notaEstudiante = notaEstudiante;
     }
 
     public int getCodigo() {
-        return codigo;
+        return asistencia;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCodigo(int asistencia) {
+        this.asistencia = asistencia;
     }
 
-    public int getCodigoEstudiante() {
-        return codigoEstudiante;
+    public int getCedulaEstudiante() {
+        return cedulaEstudiante;
     }
 
-    public void setCodigoEstudiante(int codigoEstudiante) {
-        this.codigoEstudiante = codigoEstudiante;
+    public void setCedulaEstudiante(int cedulaEstudiante) {
+        this.cedulaEstudiante = cedulaEstudiante;
     }
 
     public int getCodigoCurso() {
@@ -47,12 +51,12 @@ public class Asignacion {
         this.codigoCurso = codigoCurso;
     }
 
-    public int getCodigoDocente() {
-        return codigoDocente;
+    public int getAsistencia() {
+        return asistencia;
     }
 
-    public void setCodigoDocente(int codigoDocente) {
-        this.codigoDocente = codigoDocente;
+    public void setAsistencia(int codigoDocente) {
+        this.asistencia = codigoDocente;
     }
 
     public int getNotaEstudiante() {
@@ -63,4 +67,26 @@ public class Asignacion {
         this.notaEstudiante = notaEstudiante;
     }
     
+      public void Agregar()
+    {
+      Conexion conectar= new Conexion();
+       try {
+           String sql = "INSERT INTO asignacion (codigoCurso, cedulaEstudiante, notaEstudiante, asistenciaEstudiante) VALUES (?, ?)";
+    
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql); 
+            pstmt.setInt(1, getCodigoCurso());
+            pstmt.setInt(2, getCedulaEstudiante());
+            pstmt.setInt(1, getCodigoCurso());
+            pstmt.setInt(2, getCedulaEstudiante());
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+            "Se asigno la información correspondiente del estudiante al curso", "INFORMACION",
+            JOptionPane.INFORMATION_MESSAGE);
+       } 
+       catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+    
+    }
 }

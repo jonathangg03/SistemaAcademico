@@ -1,23 +1,24 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaz;
-import Logica.Usuario;
-import Logica.Estudiante;
+
 import Logica.Administrador;
 import Logica.Docente;
+import Logica.Estudiante;
+import Logica.Usuario;
 
 /**
  *
- * @author MegaByte
+ * @author dgarcia
  */
-public class MenuAdmin extends javax.swing.JPanel {
+public class MenuAdministrador extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuAdmin
+     * Creates new form MenuAdministrador
      */
-    public MenuAdmin() {
+    public MenuAdministrador() {
         initComponents();
     }
 
@@ -30,7 +31,6 @@ public class MenuAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -82,6 +82,8 @@ public class MenuAdmin extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         txt_eliminarcurso_codigo = new javax.swing.JTextField();
         btn_eliminarCurso = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -148,7 +150,7 @@ public class MenuAdmin extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(btn_crearUsuario)))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +175,7 @@ public class MenuAdmin extends javax.swing.JPanel {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmb_crearusuario_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(btn_crearUsuario)
                 .addGap(85, 85, 85))
         );
@@ -225,7 +227,7 @@ public class MenuAdmin extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(btn_editarUsuario)))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,7 +252,7 @@ public class MenuAdmin extends javax.swing.JPanel {
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmb_editarusuario_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(btn_editarUsuario)
                 .addGap(85, 85, 85))
         );
@@ -275,7 +277,7 @@ public class MenuAdmin extends javax.swing.JPanel {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(392, 392, 392)
                         .addComponent(btn_eliminarUsuario)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +288,7 @@ public class MenuAdmin extends javax.swing.JPanel {
                 .addComponent(txt_eliminarusuario_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_eliminarUsuario)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar usuario", jPanel4);
@@ -328,7 +330,7 @@ public class MenuAdmin extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(374, 374, 374)
                         .addComponent(btn_crearCurso)))
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +345,7 @@ public class MenuAdmin extends javax.swing.JPanel {
                 .addComponent(txt_crearcurso_cedulaDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_crearCurso)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear curso", jPanel5);
@@ -374,7 +376,7 @@ public class MenuAdmin extends javax.swing.JPanel {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(379, 379, 379)
                         .addComponent(btn_editarCurso)))
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,7 +395,7 @@ public class MenuAdmin extends javax.swing.JPanel {
                 .addComponent(txt_editarcurso_codigodocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(btn_editarCurso)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Editar curso", jPanel6);
@@ -415,66 +417,49 @@ public class MenuAdmin extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(386, 386, 386)
                 .addComponent(btn_eliminarCurso)
-                .addContainerGap(424, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(164, 164, 164)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel17)
                         .addComponent(txt_eliminarcurso_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(166, Short.MAX_VALUE)))
+                    .addContainerGap(34, Short.MAX_VALUE)))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(233, 233, 233)
                 .addComponent(btn_eliminarCurso)
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addContainerGap(314, Short.MAX_VALUE))
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(171, 171, 171)
                     .addComponent(jLabel17)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(txt_eliminarcurso_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(337, Short.MAX_VALUE)))
+                    .addContainerGap(355, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Eliminar curso", jPanel7);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 751, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1)
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmb_crearusuario_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_crearusuario_rolActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_crearusuario_rolActionPerformed
-
-    private void cmb_editarusuario_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_editarusuario_rolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_editarusuario_rolActionPerformed
-
-    private void txt_eliminarcurso_codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_eliminarcurso_codigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_eliminarcurso_codigoActionPerformed
 
     private void btn_crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearUsuarioActionPerformed
         int cedula = Integer.parseInt(txt_crearusuario_cedula.getText());
@@ -487,19 +472,65 @@ public class MenuAdmin extends javax.swing.JPanel {
         usuarioNuevo.setCorreoElectronico(correo);
         usuarioNuevo.setContrasena(contrasena);
         usuarioNuevo.Agregar();
-        
+
         switch (rol) {
             case "Administrador":
-                administradorNuevo.setCedula(cedula);
-                administradorNuevo.Agregar();
-                break;
+            administradorNuevo.setCedula(cedula);
+            administradorNuevo.Agregar();
+            break;
             case "Docente":
-                break;
+                docenteNuevo.setCedula(cedula);
+                docenteNuevo.Agregar();
+            break;
             default:
-                break;
+                estudianteNuevo.setCedula(cedula);
+                estudianteNuevo.Agregar();
+            break;
         }
     }//GEN-LAST:event_btn_crearUsuarioActionPerformed
 
+    private void cmb_editarusuario_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_editarusuario_rolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_editarusuario_rolActionPerformed
+
+    private void txt_eliminarcurso_codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_eliminarcurso_codigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_eliminarcurso_codigoActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MenuAdministrador().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_crearCurso;
@@ -527,7 +558,6 @@ public class MenuAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
