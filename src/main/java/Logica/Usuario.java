@@ -4,6 +4,11 @@
  */
 package Logica;
 
+import Datos.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MegaByte
@@ -13,32 +18,20 @@ public class Usuario {
     private String nombreCompleto;
     private String correoElectronico;
     private String contrasena;
-    private boolean activo;
-    private Roles rol;
 
     public Usuario(int id_usuario, String nombreCompleto, String correoElectronico, String contrasena, boolean activo, Roles rol) {
         this.cedula = id_usuario;
         this.nombreCompleto = nombreCompleto;
         this.correoElectronico = correoElectronico;
         this.contrasena = contrasena;
-        this.activo = activo;
-        this.rol = rol;
     }
 
-    public Roles getRol() {
-        return rol;
-    }
-
-    public void setRol(Roles rol) {
-        this.rol = rol;
-    }
-
-    public int getId_usuario() {
+    public int getCedula() {
         return cedula;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.cedula = id_usuario;
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
     }
 
     public String getNombreCompleto() {
@@ -57,20 +50,34 @@ public class Usuario {
         this.correoElectronico = correoElectronico;
     }
 
-    public String getClave() {
+    public String getContrasena() {
         return contrasena;
     }
 
-    public void setClave(String contrasena) {
+    public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-
-    public boolean isActivo() {
-        return activo;
+    
+    public void Agregar(){
+      Conexion conectar = new Conexion();
+       try {
+           String sql = "INSERT INTO usuario (cedula, nombreCompleto, correo, contrasena) VALUES (?,?,?,?)";
+    
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql); 
+            pstmt.setInt(1, getCedula());
+            pstmt.setString(2, getNombreCompleto());
+            pstmt.setString(3, getCorreoElectronico());
+            pstmt.setString(4, getContrasena());
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+            "Se ha almacenado el Usuario", "INFORMACION",
+            JOptionPane.INFORMATION_MESSAGE);
+       }
+       catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+            "Error al agregar el usuario", "INFORMACION",
+            JOptionPane.ERROR_MESSAGE);
+        }
     }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-
 }

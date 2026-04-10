@@ -4,6 +4,11 @@
  */
 package Logica;
 
+import Datos.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MegaByte
@@ -24,5 +29,23 @@ public class Estudiante extends Usuario{
         this.promedio = promedio;
     }
     
-    
+        public void Agregar() {
+        Conexion conectar = new Conexion();
+        try {
+            String sql = "INSERT INTO usuario (cedulaDocente) VALUES (?,?)";
+
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql);
+            pstmt.setInt(1, getCedula());
+            pstmt.setDouble(2, getPromedio());
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+                    "Se ha almacenado el Usuario", "INFORMACION",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Error al agregar el usuario", "INFORMACION",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
