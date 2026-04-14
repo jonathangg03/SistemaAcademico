@@ -8,6 +8,7 @@ import Logica.Administrador;
 import Logica.Docente;
 import Logica.Estudiante;
 import Logica.Usuario;
+import Logica.Curso;
 
 /**
  *
@@ -259,36 +260,39 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Editar usuario", jPanel3);
 
-        jLabel11.setText("Cedula del usuario a modificar:");
+        jLabel11.setText("Cedula del usuario a eliminar:");
 
         btn_eliminarUsuario.setText("Eliminar usuario");
+        btn_eliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(86, 86, 86)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(txt_eliminarusuario_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(txt_eliminarusuario_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(392, 392, 392)
+                        .addGap(235, 235, 235)
                         .addComponent(btn_eliminarUsuario)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(211, 211, 211)
+                .addGap(217, 217, 217)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_eliminarusuario_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_eliminarUsuario)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar usuario", jPanel4);
@@ -311,6 +315,11 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jLabel12.setText("Nombre del curso:");
 
         btn_crearCurso.setText("Crear curso");
+        btn_crearCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_crearCursoActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("Cédula de docente:");
 
@@ -409,36 +418,38 @@ public class MenuAdministrador extends javax.swing.JFrame {
         });
 
         btn_eliminarCurso.setText("Eliminar");
+        btn_eliminarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarCursoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(386, 386, 386)
-                .addComponent(btn_eliminarCurso)
-                .addContainerGap(292, Short.MAX_VALUE))
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(164, 164, 164)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(101, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel17)
-                        .addComponent(txt_eliminarcurso_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(34, Short.MAX_VALUE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                            .addComponent(btn_eliminarCurso)
+                            .addGap(327, 327, 327))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                            .addComponent(txt_eliminarcurso_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(97, 97, 97)))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(233, 233, 233)
+                .addGap(259, 259, 259)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_eliminarcurso_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_eliminarCurso)
-                .addContainerGap(314, Short.MAX_VALUE))
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(171, 171, 171)
-                    .addComponent(jLabel17)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(txt_eliminarcurso_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(355, Short.MAX_VALUE)))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar curso", jPanel7);
@@ -447,7 +458,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 751, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -496,6 +507,42 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private void txt_eliminarcurso_codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_eliminarcurso_codigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_eliminarcurso_codigoActionPerformed
+
+    private void btn_eliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarUsuarioActionPerformed
+        // TODO add your handling code here:
+        int cedulaUsuario = Integer.parseInt(txt_eliminarusuario_cedula.getText());
+        
+        Estudiante estudianteAEliminar = new Estudiante();
+        Docente docenteAEliminar = new Docente();
+        Administrador adminAEliminar = new Administrador();
+        Usuario usuarioAEliminar = new Usuario();
+        
+        estudianteAEliminar.setCedula(cedulaUsuario);
+        docenteAEliminar.setCedula(cedulaUsuario);
+        adminAEliminar.setCedula(cedulaUsuario);
+        usuarioAEliminar.setCedula(cedulaUsuario);
+        
+        estudianteAEliminar.eliminar();
+        docenteAEliminar.eliminar();
+        adminAEliminar.eliminar();
+        usuarioAEliminar.eliminar();
+    }//GEN-LAST:event_btn_eliminarUsuarioActionPerformed
+
+    private void btn_eliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarCursoActionPerformed
+        // TODO add your handling code here:
+        int curso = Integer.parseInt(txt_eliminarcurso_codigo.getText());
+        Curso cursoAEliminar = new Curso();
+        cursoAEliminar.eliminar(curso);
+    }//GEN-LAST:event_btn_eliminarCursoActionPerformed
+
+    private void btn_crearCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearCursoActionPerformed
+        // TODO add your handling code here:
+        int cedulaDocente = Integer.parseInt(txt_crearcurso_cedulaDocente.getText());
+        String nombreCurso = txt_crearcurso_nombre.getText();        
+        cursoNuevo.setCedulaDocente(cedulaDocente);
+        cursoNuevo.setNombreCurso(nombreCurso);
+        cursoNuevo.Agregar();
+    }//GEN-LAST:event_btn_crearCursoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -589,4 +636,5 @@ public class MenuAdministrador extends javax.swing.JFrame {
     public Estudiante estudianteNuevo = new Estudiante();
     public Docente docenteNuevo = new Docente();
     public Administrador administradorNuevo = new Administrador();
+    public Curso cursoNuevo = new Curso();
 }

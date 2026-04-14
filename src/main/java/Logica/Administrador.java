@@ -5,6 +5,7 @@
 package Logica;
 
 import Datos.Conexion;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -36,6 +37,22 @@ public class Administrador extends Usuario {
             JOptionPane.showMessageDialog(null,
                     "Error al agregar el usuario", "INFORMACION",
                     JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void eliminar() {
+        Conexion conexion = new Conexion();
+        String sql = "DELETE FROM admin WHERE cedulaAdmin = ?";
+
+        try {
+            CallableStatement pstmt = conexion.Conectar().prepareCall(sql);
+            pstmt.setInt(1, getCedula());
+            pstmt.execute();
+            //JOptionPane.showMessageDialog(null, "Administrador eliminado con exito.");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar el Administrador.");
+            System.out.println("Error Consulta: " + ex.toString());
         }
     }
 }

@@ -5,6 +5,7 @@
 package Logica;
 
 import Datos.Conexion;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -17,8 +18,8 @@ public class Docente extends Usuario {
 
     public Docente(){};
     
-    public Docente(int id_usuario, String nombreCompleto, String correoElectronico, String contrasena, boolean activo, Roles rol) {
-        super(id_usuario, nombreCompleto, correoElectronico, contrasena, activo, rol);
+    public Docente(int cedula, String nombreCompleto, String correoElectronico, String contrasena, boolean activo, Roles rol) {
+        super(cedula, nombreCompleto, correoElectronico, contrasena, activo, rol);
     }
 
     public void Agregar() {
@@ -37,6 +38,22 @@ public class Docente extends Usuario {
             JOptionPane.showMessageDialog(null,
                     "Error al agregar el usuario", "INFORMACION",
                     JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+        public void eliminar() {
+        Conexion conexion = new Conexion();
+        String sql = "DELETE FROM docente WHERE cedulaDocente = ?";
+
+        try {
+            CallableStatement pstmt = conexion.Conectar().prepareCall(sql);
+            pstmt.setInt(1, getCedula());
+            pstmt.execute();
+           // JOptionPane.showMessageDialog(null, "Docente eliminado con exito.");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar el docente.");
+            System.out.println("Error Consulta: " + ex.toString());
         }
     }
 }

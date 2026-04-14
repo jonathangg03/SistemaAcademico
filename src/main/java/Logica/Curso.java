@@ -58,4 +58,20 @@ public class Curso {
     
     }
     
+        public void eliminar(int codigoCurso) {
+        Conexion conexion = new Conexion();
+        String sql = "DELETE FROM curso WHERE codigo = ?";
+
+        try {
+            CallableStatement pstmt = conexion.Conectar().prepareCall(sql);
+            pstmt.setInt(1, codigoCurso);
+            pstmt.execute();
+            JOptionPane.showMessageDialog(null, "Curso eliminado con exito.");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar el curso.");
+            System.out.println("Error Consulta: " + ex.toString());
+        }
+    }
+    
 }
