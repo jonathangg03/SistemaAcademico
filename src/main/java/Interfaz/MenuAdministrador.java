@@ -21,6 +21,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
      */
     public MenuAdministrador() {
         initComponents();
+        usuarioNuevo.Listar(tbl_usuarios);
+        cursoNuevo.Listar(tbl_cursos);
     }
 
     /**
@@ -34,7 +36,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_usuarios = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -56,15 +58,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
         txt_editarusuario_correo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txt_editarusuario_contrasena = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        cmb_editarusuario_rol = new javax.swing.JComboBox<>();
         btn_editarUsuario = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txt_eliminarusuario_cedula = new javax.swing.JTextField();
         btn_eliminarUsuario = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbl_cursos = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         txt_crearcurso_nombre = new javax.swing.JTextField();
@@ -86,7 +86,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -97,7 +97,12 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbl_usuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_usuariosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbl_usuarios);
 
         jTabbedPane1.addTab("Ver usuarios", jScrollPane1);
 
@@ -151,7 +156,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(btn_crearUsuario)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,16 +196,12 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         jLabel9.setText("Contraseña:");
 
-        jLabel10.setText("Rol:");
-
-        cmb_editarusuario_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Docente", "Administrador" }));
-        cmb_editarusuario_rol.addActionListener(new java.awt.event.ActionListener() {
+        btn_editarUsuario.setText("Editar usuario");
+        btn_editarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_editarusuario_rolActionPerformed(evt);
+                btn_editarUsuarioActionPerformed(evt);
             }
         });
-
-        btn_editarUsuario.setText("Editar usuario");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -220,15 +221,11 @@ public class MenuAdministrador extends javax.swing.JFrame {
                                 .addComponent(txt_editarusuario_nombrecompleto, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
                                 .addComponent(jLabel8)
                                 .addComponent(txt_editarusuario_correo)
-                                .addComponent(jLabel10)
                                 .addComponent(txt_editarusuario_contrasena))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(cmb_editarusuario_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(340, 340, 340)
+                        .addGap(308, 308, 308)
                         .addComponent(btn_editarUsuario)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,13 +246,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_editarusuario_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmb_editarusuario_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(btn_editarUsuario)
-                .addGap(85, 85, 85))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Editar usuario", jPanel3);
@@ -281,7 +274,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(235, 235, 235)
                         .addComponent(btn_eliminarUsuario)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,7 +290,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Eliminar usuario", jPanel4);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_cursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -308,7 +301,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tbl_cursos);
 
         jTabbedPane1.addTab("Ver cursos", jScrollPane2);
 
@@ -339,7 +332,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(374, 374, 374)
                         .addComponent(btn_crearCurso)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,6 +357,11 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jLabel15.setText("Nombre del curso:");
 
         btn_editarCurso.setText("Editar curso");
+        btn_editarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarCursoActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("Código docente:");
 
@@ -385,7 +383,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(379, 379, 379)
                         .addComponent(btn_editarCurso)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,7 +427,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,11 +496,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 estudianteNuevo.Agregar();
             break;
         }
+        usuarioNuevo.Listar(tbl_usuarios);
     }//GEN-LAST:event_btn_crearUsuarioActionPerformed
-
-    private void cmb_editarusuario_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_editarusuario_rolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_editarusuario_rolActionPerformed
 
     private void txt_eliminarcurso_codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_eliminarcurso_codigoActionPerformed
         // TODO add your handling code here:
@@ -526,6 +521,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         docenteAEliminar.eliminar();
         adminAEliminar.eliminar();
         usuarioAEliminar.eliminar();
+        usuarioNuevo.Listar(tbl_usuarios);
     }//GEN-LAST:event_btn_eliminarUsuarioActionPerformed
 
     private void btn_eliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarCursoActionPerformed
@@ -533,6 +529,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         int curso = Integer.parseInt(txt_eliminarcurso_codigo.getText());
         Curso cursoAEliminar = new Curso();
         cursoAEliminar.eliminar(curso);
+        cursoNuevo.Listar(tbl_cursos);
     }//GEN-LAST:event_btn_eliminarCursoActionPerformed
 
     private void btn_crearCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearCursoActionPerformed
@@ -542,7 +539,39 @@ public class MenuAdministrador extends javax.swing.JFrame {
         cursoNuevo.setCedulaDocente(cedulaDocente);
         cursoNuevo.setNombreCurso(nombreCurso);
         cursoNuevo.Agregar();
+        cursoNuevo.Listar(tbl_cursos);
     }//GEN-LAST:event_btn_crearCursoActionPerformed
+
+    private void tbl_usuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_usuariosMouseClicked
+        // TODO add your handling code here
+    }//GEN-LAST:event_tbl_usuariosMouseClicked
+
+    private void btn_editarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarUsuarioActionPerformed
+        // TODO add your handling code here:
+        int cedulaABuscar = Integer.parseInt(txt_editarusuario_cedula.getText());
+        String nuevoNombre = txt_editarusuario_nombrecompleto.getText();
+        String nuevoCorreo = txt_editarusuario_correo.getText();
+        String nuevaContrasena = txt_editarusuario_contrasena.getText();
+        
+        usuarioNuevo.setCedula(cedulaABuscar);
+        usuarioNuevo.setNombreCompleto(nuevoNombre);
+        usuarioNuevo.setCorreoElectronico(nuevoCorreo);
+        usuarioNuevo.setContrasena(nuevaContrasena);
+        
+        usuarioNuevo.Actualizar();
+        usuarioNuevo.Listar(tbl_usuarios);
+    }//GEN-LAST:event_btn_editarUsuarioActionPerformed
+
+    private void btn_editarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCursoActionPerformed
+        // TODO add your handling code here:
+        int codigoABuscar = Integer.parseInt(txt_editarcurso_codigocurso.getText());
+        String nombreCurso = txt_editarcurso_nombre.getText();
+        int cedulaDocente = Integer.parseInt(txt_editarcurso_codigodocente.getText());
+        
+        cursoNuevo.setCedulaDocente(cedulaDocente);
+        cursoNuevo.setNombreCurso(nombreCurso);
+        cursoNuevo.Actualizar(codigoABuscar);
+    }//GEN-LAST:event_btn_editarCursoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -587,9 +616,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminarCurso;
     private javax.swing.JButton btn_eliminarUsuario;
     private javax.swing.JComboBox<String> cmb_crearusuario_rol;
-    private javax.swing.JComboBox<String> cmb_editarusuario_rol;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -614,8 +641,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tbl_cursos;
+    private javax.swing.JTable tbl_usuarios;
     private javax.swing.JTextField txt_crearcurso_cedulaDocente;
     private javax.swing.JTextField txt_crearcurso_nombre;
     private javax.swing.JTextField txt_crearusuario_cedula;
