@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
 public class Conexion {
     String url = "jdbc:mysql://localhost:3306/sistemaacademico";
     String user = "root";
-    String password = "Desarrollo123";
-    //String password = "4CALXaTcaW";    
+    //String password = "Desarrollo123";
+    String password = "4CALXaTcaW";    
     
     public Conexion(){}; //Constructor para inicializar la conexión
     
