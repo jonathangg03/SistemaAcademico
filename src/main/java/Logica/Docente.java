@@ -7,6 +7,7 @@ package Logica;
 import Datos.Conexion;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -40,8 +41,8 @@ public class Docente extends Usuario {
                     JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-        public void eliminar() {
+
+    public void eliminar() {
         Conexion conexion = new Conexion();
         String sql = "DELETE FROM docente WHERE cedulaDocente = ?";
 
@@ -49,11 +50,30 @@ public class Docente extends Usuario {
             CallableStatement pstmt = conexion.Conectar().prepareCall(sql);
             pstmt.setInt(1, getCedula());
             pstmt.execute();
-           // JOptionPane.showMessageDialog(null, "Docente eliminado con exito.");
+            // JOptionPane.showMessageDialog(null, "Docente eliminado con exito.");
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al eliminar el docente.");
             System.out.println("Error Consulta: " + ex.toString());
+        }
+    }
+    
+    public void Buscar(int cedula) {
+        Conexion conectar = new Conexion();
+
+        try {
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement("SELECT * FROM docente WHERE cedulaDocente=?");
+            pstmt.setInt(1, cedula);
+            ResultSet resultado = pstmt.executeQuery();
+
+            if (resultado.next()) {
+                this.setCedula(resultado.getInt("cedulaDocente"));
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+            System.out.println("Eror trayendo docente: " + e);
         }
     }
 }

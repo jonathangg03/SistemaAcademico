@@ -4,6 +4,11 @@
  */
 package Interfaz;
 import Interfaz.AgregarCurso;
+import Logica.Administrador;
+import Logica.Docente;
+import Logica.Estudiante;
+import Logica.Usuario;
+import javax.swing.JOptionPane;
 /**
  *
  * @author MegaByte
@@ -28,14 +33,14 @@ public class InicioSesion extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtNombreUsuario = new javax.swing.JTextField();
+        txt_cedulaUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtContrasena = new javax.swing.JTextField();
         btn_iniciosesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nombre de usuario:");
+        jLabel1.setText("Cedula:");
 
         jLabel2.setText("Contraseña:");
 
@@ -59,7 +64,7 @@ public class InicioSesion extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombreUsuario)
+                            .addComponent(txt_cedulaUsuario)
                             .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
@@ -72,7 +77,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_cedulaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -99,9 +104,45 @@ public class InicioSesion extends javax.swing.JFrame {
     private void btn_iniciosesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciosesionActionPerformed
         // TODO add your handling code here:
         MenuAdministrador menuAdmin = new MenuAdministrador();
+        MenuDocente menuDocente = new MenuDocente();
+        MenuEstudiante menuEstudiante = new MenuEstudiante();
         
-        menuAdmin.setVisible(true);
-        this.setVisible(false);
+        int cedulaUsuario = Integer.parseInt(txt_cedulaUsuario.getText());
+        String contrasena = txtContrasena.getText();
+        Usuario objUsuario = new Usuario();
+        objUsuario.Buscar(cedulaUsuario);
+        System.out.println("cedula: " + objUsuario.getCedula());
+        System.out.println("pass: " + objUsuario.getContrasena());
+        System.out.println("Contra: " + contrasena);
+        if(contrasena.equals(objUsuario.getContrasena())) {
+            Estudiante estudianteEncontrado = new Estudiante();
+            Docente docenteEncontrado = new Docente();
+            Administrador adminEncontrado = new Administrador();
+            
+            estudianteEncontrado.Buscar(cedulaUsuario);
+            docenteEncontrado.Buscar(cedulaUsuario);
+            adminEncontrado.Buscar(cedulaUsuario);
+            System.out.println("cedula Estdiante: " + estudianteEncontrado.getCedula());
+            System.out.println("cedula Admin: " + adminEncontrado.getCedula());
+            System.out.println("cedula Docente: " + docenteEncontrado.getCedula());
+            if (estudianteEncontrado.getCedula() > 0) {
+                menuEstudiante.setVisible(true);
+            }
+
+            if (docenteEncontrado.getCedula() > 0) {
+                menuDocente.setVisible(true);
+            }
+
+            if (adminEncontrado.getCedula() > 0) {
+                menuAdmin.setVisible(true);
+            }
+
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null,
+            "Cedula o contraseña erroneas","Error",
+            JOptionPane.ERROR_MESSAGE); 
+        }
     }//GEN-LAST:event_btn_iniciosesionActionPerformed
 
     /**
@@ -145,6 +186,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtContrasena;
-    private javax.swing.JTextField txtNombreUsuario;
+    private javax.swing.JTextField txt_cedulaUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -185,4 +185,31 @@ public class Usuario {
         }
     
     }
+    
+     public void Buscar(int cedula){
+        Conexion conectar= new Conexion();
+ 
+        try
+        {
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement
+            ("SELECT * FROM usuario WHERE cedula=?"); 
+            pstmt.setInt(1, cedula);
+            ResultSet resultado = pstmt.executeQuery();
+            
+            if(resultado.next()) {
+                this.setCedula(resultado.getInt("cedula"));
+                this.setNombreCompleto(resultado.getString("nombreCompleto"));
+                this.setCorreoElectronico(resultado.getString("correo"));
+                this.setContrasena(resultado.getString("contrasena"));
+            }
+            
+        }
+            catch(SQLException e)
+            {
+                    
+                e.printStackTrace();
+                System.out.println("Eror trayendo usuarios: " + e);
+            }
+    }
+     
 }

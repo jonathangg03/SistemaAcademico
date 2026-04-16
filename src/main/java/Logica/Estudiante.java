@@ -7,6 +7,7 @@ package Logica;
 import Datos.Conexion;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -65,6 +66,25 @@ public class Estudiante extends Usuario{
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al eliminar el docente.");
             System.out.println("Error Consulta: " + ex.toString());
+        }
+    }
+    
+    public void Buscar(int cedula) {
+        Conexion conectar = new Conexion();
+
+        try {
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement("SELECT * FROM estudiante WHERE cedulaEstudiante=?");
+            pstmt.setInt(1, cedula);
+            ResultSet resultado = pstmt.executeQuery();
+
+            if (resultado.next()) {
+                this.setCedula(resultado.getInt("cedulaEstudiante"));
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+            System.out.println("Eror trayendo estudiante: " + e);
         }
     }
 }
