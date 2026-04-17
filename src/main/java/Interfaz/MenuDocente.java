@@ -4,6 +4,11 @@
  */
 package Interfaz;
 
+import Logica.Asignacion;
+import Logica.Curso;
+import Logica.Estudiante;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MegaByte
@@ -29,13 +34,13 @@ public class MenuDocente extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txt_gestionarestudiante_codigocurso = new javax.swing.JTextField();
+        txt_gestionarestudiante_codigoEstudiante = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txt_gestionarestudiante_notacurso = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txt_gestionarestudiante_asistenciacurso = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -51,6 +56,11 @@ public class MenuDocente extends javax.swing.JFrame {
         jLabel4.setText("Asistencia del curso:");
 
         jButton1.setText("Actualizar información");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,14 +71,14 @@ public class MenuDocente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_gestionarestudiante_asistenciacurso, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_gestionarestudiante_notacurso, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_gestionarestudiante_codigoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
+                            .addComponent(txt_gestionarestudiante_codigocurso, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addComponent(jButton1)))
@@ -80,19 +90,19 @@ public class MenuDocente extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_gestionarestudiante_codigocurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_gestionarestudiante_codigoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_gestionarestudiante_notacurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_gestionarestudiante_asistenciacurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(68, Short.MAX_VALUE))
@@ -140,6 +150,67 @@ public class MenuDocente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int codigoCurso = Integer.parseInt(txt_gestionarestudiante_codigocurso.getText());
+        int cedulaEstudiante = Integer.parseInt(txt_gestionarestudiante_codigoEstudiante.getText());
+        int nota = Integer.parseInt(txt_gestionarestudiante_notacurso.getText());
+        int asistencia = Integer.parseInt(txt_gestionarestudiante_asistenciacurso.getText());
+        
+       
+        
+        Asignacion objAsignacion = new Asignacion();
+        
+
+        
+        //Estudiante estudanteBuscado = new Estudiante();
+        //Curso cursoBuscado = new Curso();
+        
+        objAsignacion.Buscar(cedulaEstudiante, codigoCurso);
+        objAsignacion.setNota(nota);
+        objAsignacion.setAsistencia(asistencia);
+
+        //estudanteBuscado.Buscar(cedulaEstudiante);
+        //cursoBuscado.Buscar();
+        
+        
+
+        System.out.println("cedulaEstudiante " + objAsignacion.getCedulaEstudiante());
+        if (objAsignacion.getCedulaEstudiante() == 0) { //No existe, hay que crear
+            objAsignacion.setCedulaEstudiante(cedulaEstudiante);
+            objAsignacion.setCodigoCurso(codigoCurso);
+            objAsignacion.Agregar();
+            JOptionPane.showMessageDialog(null, "Se asigno el usuario " + cedulaEstudiante + " al curso seleccionado", "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
+        } else { //existe, hay que editar
+            objAsignacion.Actualizar();
+            JOptionPane.showMessageDialog(null, "Se actualizaron datos del estudiante " + cedulaEstudiante, "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        /*if (objAsignacion.getCedulaEstudiante() == 0) { //No existe la asignacion aun
+            if (nota < 0 || nota > 100) {
+                JOptionPane.showMessageDialog(null, "Nota con valores invalidos, favor ingresar otro dato", "Error en nota", JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (asistencia < 0) {
+                    JOptionPane.showMessageDialog(null, "Asistencia con valores invalidos, favor ingresar otro dato", "Error en asistencia", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    objAsignacion.Agregar();
+                    JOptionPane.showMessageDialog(null, "Se asigno el usuario " + cedulaEstudiante + " al curso seleccionado", "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        } else {
+            if (nota < 0 || nota > 100) {
+                JOptionPane.showMessageDialog(null, "Nota con valores invalidos, favor ingresar otro dato", "Error en nota", JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (asistencia < 0) {
+                    JOptionPane.showMessageDialog(null, "Asistencia con valores invalidos, favor ingresar otro dato", "Error en asistencia", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    objAsignacion.Actualizar();
+                    JOptionPane.showMessageDialog(null, "Se actualizaron datos del estudiante " + cedulaEstudiante, "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }*/
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,9 +256,9 @@ public class MenuDocente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txt_gestionarestudiante_asistenciacurso;
+    private javax.swing.JTextField txt_gestionarestudiante_codigoEstudiante;
+    private javax.swing.JTextField txt_gestionarestudiante_codigocurso;
+    private javax.swing.JTextField txt_gestionarestudiante_notacurso;
     // End of variables declaration//GEN-END:variables
 }

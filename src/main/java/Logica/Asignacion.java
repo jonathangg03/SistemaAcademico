@@ -6,6 +6,7 @@ package Logica;
 
 import Datos.Conexion;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -16,31 +17,12 @@ import javax.swing.JOptionPane;
 public class Asignacion {
     private int codigoCurso;
     private int cedulaEstudiante;
-    private int notaEstudiante;
+    private int nota;
     private int asistencia;
     
 
-    public Asignacion(int codigo, int cedulaEstudiante, int codigoCurso, int codigoDocente, int notaEstudiante) {
-        this.asistencia = codigo;
-        this.cedulaEstudiante = cedulaEstudiante;
-        this.codigoCurso = codigoCurso;
-        this.notaEstudiante = notaEstudiante;
-    }
+    public Asignacion() {
 
-    public int getCodigo() {
-        return asistencia;
-    }
-
-    public void setCodigo(int asistencia) {
-        this.asistencia = asistencia;
-    }
-
-    public int getCedulaEstudiante() {
-        return cedulaEstudiante;
-    }
-
-    public void setCedulaEstudiante(int cedulaEstudiante) {
-        this.cedulaEstudiante = cedulaEstudiante;
     }
 
     public int getCodigoCurso() {
@@ -51,42 +33,92 @@ public class Asignacion {
         this.codigoCurso = codigoCurso;
     }
 
+    public int getCedulaEstudiante() {
+        return cedulaEstudiante;
+    }
+
+    public void setCedulaEstudiante(int cedulaEstudiante) {
+        this.cedulaEstudiante = cedulaEstudiante;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+
     public int getAsistencia() {
         return asistencia;
     }
 
-    public void setAsistencia(int codigoDocente) {
-        this.asistencia = codigoDocente;
+    public void setAsistencia(int asistencia) {
+        this.asistencia = asistencia;
     }
 
-    public int getNotaEstudiante() {
-        return notaEstudiante;
-    }
 
-    public void setNotaEstudiante(int notaEstudiante) {
-        this.notaEstudiante = notaEstudiante;
-    }
+
     
-      public void Agregar()
-    {
-      Conexion conectar= new Conexion();
-       try {
-           String sql = "INSERT INTO asignacion (codigoCurso, cedulaEstudiante, notaEstudiante, asistenciaEstudiante) VALUES (?, ?)";
-    
-            PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql); 
+    public void Agregar() {
+        Conexion conectar = new Conexion();
+        try {
+            String sql = "INSERT INTO asignacion (codigoCurso, cedulaEstudiante, notaEstudiante, asistenciaEstudiante) VALUES (?, ?, ?, ?)";
+
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql);
             pstmt.setInt(1, getCodigoCurso());
             pstmt.setInt(2, getCedulaEstudiante());
-            pstmt.setInt(1, getCodigoCurso());
-            pstmt.setInt(2, getCedulaEstudiante());
+            pstmt.setInt(3, getNota());
+            pstmt.setInt(4, getAsistencia());
             pstmt.executeUpdate();
-            JOptionPane.showMessageDialog(null,
-            "Se asigno la información correspondiente del estudiante al curso", "INFORMACION",
-            JOptionPane.INFORMATION_MESSAGE);
-       } 
-       catch (SQLException e) 
-        {
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-    
+    }
+
+    public void Actualizar() {
+        Conexion conectar = new Conexion();
+        try {
+            String sql = "UPDATE asignacion set notaEstudiante=?, asistenciaEstudiante=? WHERE codigoCurso=? AND cedulaEstudiante=?";
+
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql);
+            pstmt.setInt(1, getNota());
+            pstmt.setInt(2, getAsistencia());
+            pstmt.setInt(3, getCodigoCurso());
+            pstmt.setInt(4, getCedulaEstudiante());
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+                    "Registro Actualizado", "INFORMACION",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error de edición: " + e);
+        }
+
+    }
+
+
+    public void Buscar(int cedulaEstudiante, int codigoCurso) {
+        Conexion conectar = new Conexion();
+
+        try {
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement("SELECT * FROM asignacion WHERE cedulaEstudiante=? AND codigoCurso=?");
+            pstmt.setInt(1, cedulaEstudiante);
+            pstmt.setInt(2, codigoCurso);
+            ResultSet resultado = pstmt.executeQuery();
+
+            if (resultado.next()) {
+                System.out.println("ced est: " + resultado.getInt("cedulaEstudiante"));
+                this.setCedulaEstudiante(resultado.getInt("cedulaEstudiante"));
+                this.setCodigoCurso(resultado.getInt("codigoCurso"));
+                this.setNota(resultado.getInt("notaEstudiante"));
+                this.setAsistencia(resultado.getInt("asistenciaEstudiante"));
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+            System.out.println("Eror trayendo docente: " + e);
+        }
     }
 }
