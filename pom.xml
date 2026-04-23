@@ -13,10 +13,15 @@
     <dependencies>
         <!--  Dependencia del conector JDBC de MySQL  -->
         <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.33</version>
-        <!--  Usa la versión más reciente disponible  -->
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+            <!--  Usa la versión más reciente disponible  -->
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.9</version>
         </dependency>
     </dependencies>    
 </project>

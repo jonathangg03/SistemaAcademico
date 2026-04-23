@@ -3,10 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaz;
+import Datos.Conexion;
 import Logica.Estudiante;
 import Logica.Usuario;
 import Logica.Principal;
 import Interfaz.InicioSesion;
+import java.io.FileOutputStream;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
+import java.io.FileOutputStream;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author MegaByte
@@ -15,6 +25,7 @@ public class MenuEstudiante extends javax.swing.JFrame {
     private int cedula;
     Usuario usuario = new Usuario();
     Estudiante estudiante = new Estudiante();
+    private int cedulaActual;
     
     /**
      * Creates new form MenuEstudiante
@@ -57,6 +68,10 @@ public class MenuEstudiante extends javax.swing.JFrame {
         lblCorreo = new javax.swing.JLabel();
         lblPromedio = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblReporte = new javax.swing.JTable();
+        btnGenerarReporte = new javax.swing.JButton();
+        btnExportarPDF = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btn_estudiante_cerrarsesion = new javax.swing.JButton();
 
@@ -101,7 +116,7 @@ public class MenuEstudiante extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNombre)))
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addContainerGap(459, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,20 +137,61 @@ public class MenuEstudiante extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(lblPromedio))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Consultar información", jPanel1);
+
+        tblReporte.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Curso", "Nota", "Asistencia", "Estado"
+            }
+        ));
+        jScrollPane1.setViewportView(tblReporte);
+
+        btnGenerarReporte.setText("Reporte");
+        btnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarReporteActionPerformed(evt);
+            }
+        });
+
+        btnExportarPDF.setText("Exportar PDF");
+        btnExportarPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarPDFActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 443, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(btnGenerarReporte)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExportarPDF)
+                .addGap(114, 114, 114))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 264, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGenerarReporte)
+                    .addComponent(btnExportarPDF))
+                .addGap(0, 76, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Generar reporte", jPanel2);
@@ -152,16 +208,16 @@ public class MenuEstudiante extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(155, 155, 155)
                 .addComponent(btn_estudiante_cerrarsesion, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(200, 200, 200)
                 .addComponent(btn_estudiante_cerrarsesion, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cerrar sesión", jPanel3);
@@ -174,7 +230,9 @@ public class MenuEstudiante extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -188,6 +246,133 @@ public class MenuEstudiante extends javax.swing.JFrame {
         Principal.cadulaUsuarioLogeado = 0;
     }//GEN-LAST:event_btn_estudiante_cerrarsesionActionPerformed
 
+    private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
+        // TODO add your handling code here:
+        cargarReporte(cedulaActual);
+    }//GEN-LAST:event_btnGenerarReporteActionPerformed
+
+    private void btnExportarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarPDFActionPerformed
+        // TODO add your handling code here:
+        generarPDF();
+    }//GEN-LAST:event_btnExportarPDFActionPerformed
+
+//        public void cargarDatos(int cedula){
+//        this.cedulaActual = cedula;
+//        
+//        Estudiante estudiante = new Estudiante();
+//        estudiante.Buscar(cedula);
+//        lblNombre.setText(estudiante.getNombreCompleto());
+//        lblCedula.setText(String.valueOf(estudiante.getCedula()));
+//        lblCorreo.setText(estudiante.getCorreoElectronico());
+//        
+//        double promedio = estudiante.calcularPromedio();
+//        lblPromedio.setText(String.valueOf(promedio));
+//    }
+//    
+    public void cargarReporte(int cedula) {
+        Conexion conectar = new Conexion();
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        modelo.addColumn("Curso");
+        modelo.addColumn("Nota");
+        modelo.addColumn("Asistencia (%)");
+        modelo.addColumn("Estado");
+        
+        try {
+            String sql = "SELECT c.nombre, a.notaEstudiante, a.asistenciaEstudiante "
+                    + "FROM asignacion a "
+                    + "INNER JOIN curso c ON a.codigoCurso = c.codigo "
+                    + "WHERE a.cedulaEstudiante = ?";
+
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql);
+            pstmt.setInt(1,cedula);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int nota = rs.getInt("notaEstudiante");
+                
+                String estado;
+                if (nota < 70) {
+                    estado = "Riesgo";
+                }else{
+                    estado = "Aprobado";
+                }
+                modelo.addRow(new Object[]{
+                    rs.getString("nombre"),
+                    nota,
+                    rs.getInt("asistenciaEstudiante") + "%",
+                    estado
+                });
+            }
+
+            tblReporte.setModel(modelo);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}
+        public void generarPDF() {
+        try {
+            Document doc = new Document();
+            PdfWriter.getInstance(doc, new FileOutputStream("ReporteEstudiante.pdf"));
+            doc.open();
+
+            // 🔹 TÍTULO
+            doc.add(new Paragraph("REPORTE ACADÉMICO", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18)));
+            doc.add(new Paragraph(" "));
+
+            // 🔹 DATOS DEL ESTUDIANTE (labels que ya tienes)
+            doc.add(new Paragraph("Nombre: " + lblNombre.getText()));
+            doc.add(new Paragraph("Cédula: " + lblCedula.getText()));
+            doc.add(new Paragraph("Correo: " + lblCorreo.getText()));
+            doc.add(new Paragraph("Promedio: " + lblPromedio.getText()));
+            doc.add(new Paragraph(" "));
+
+            // 🔹 TABLA
+            PdfPTable tabla = new PdfPTable(4);
+            tabla.addCell("Curso");
+            tabla.addCell("Nota");
+            tabla.addCell("Asistencia");
+            tabla.addCell("Estado");
+
+            Conexion conectar = new Conexion();
+
+            String sql = "SELECT c.nombre, a.notaEstudiante, a.asistenciaEstudiante "
+                    + "FROM asignacion a "
+                    + "INNER JOIN curso c ON a.codigoCurso = c.codigo "
+                    + "WHERE a.cedulaEstudiante = ?";
+
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql);
+            pstmt.setInt(1, this.cedulaActual); // 🔥 usamos la misma cédula
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int nota = rs.getInt("notaEstudiante");
+
+                String estado;
+                if (nota < 70) {
+                    estado = "Riesgo";
+                } else {
+                    estado = "Aprobado";
+                }
+
+                tabla.addCell(rs.getString("nombre"));
+                tabla.addCell(String.valueOf(nota));
+                tabla.addCell(rs.getInt("asistenciaEstudiante") + "%");
+                tabla.addCell(estado);
+            }
+
+            doc.add(tabla);
+            doc.close();
+
+            javax.swing.JOptionPane.showMessageDialog(null, "PDF generado correctamente");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -226,6 +411,8 @@ public class MenuEstudiante extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExportarPDF;
+    private javax.swing.JButton btnGenerarReporte;
     private javax.swing.JButton btn_estudiante_cerrarsesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -234,10 +421,12 @@ public class MenuEstudiante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPromedio;
+    private javax.swing.JTable tblReporte;
     // End of variables declaration//GEN-END:variables
 }
