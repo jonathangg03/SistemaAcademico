@@ -86,7 +86,7 @@ public class Asignacion {
             pstmt.setInt(1, getNota());
             pstmt.setInt(2, getAsistencia());
             pstmt.setInt(3, getCodigoCurso());
-            pstmt.setInt(4, getCedulaEstudiante());
+        pstmt.setInt(4, getCedulaEstudiante());
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(null,
                     "Registro Actualizado", "INFORMACION",

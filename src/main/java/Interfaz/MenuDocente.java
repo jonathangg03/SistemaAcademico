@@ -8,6 +8,8 @@ import Logica.Asignacion;
 import Logica.Curso;
 import Logica.Estudiante;
 import javax.swing.JOptionPane;
+import Interfaz.InicioSesion;
+import Logica.Principal;
 
 /**
  *
@@ -44,6 +46,8 @@ public class MenuDocente extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        btn_docente_cerrarsesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,17 +76,18 @@ public class MenuDocente extends javax.swing.JFrame {
                         .addGap(107, 107, 107)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_gestionarestudiante_asistenciacurso, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_gestionarestudiante_notacurso, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(txt_gestionarestudiante_codigoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
                             .addComponent(txt_gestionarestudiante_codigocurso, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_gestionarestudiante_notacurso, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3)
+                                .addComponent(txt_gestionarestudiante_codigoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addComponent(jButton1)))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +119,7 @@ public class MenuDocente extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +132,7 @@ public class MenuDocente extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,6 +140,32 @@ public class MenuDocente extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Generar reporte", jPanel4);
+
+        btn_docente_cerrarsesion.setText("Cerrar sesion");
+        btn_docente_cerrarsesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_docente_cerrarsesionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(137, Short.MAX_VALUE)
+                .addComponent(btn_docente_cerrarsesion, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(152, 152, 152)
+                .addComponent(btn_docente_cerrarsesion, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(174, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Cerrar  sesion", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,12 +188,9 @@ public class MenuDocente extends javax.swing.JFrame {
         int nota = Integer.parseInt(txt_gestionarestudiante_notacurso.getText());
         int asistencia = Integer.parseInt(txt_gestionarestudiante_asistenciacurso.getText());
         
-       
-        
+        Estudiante estudianteActualizado = new Estudiante();
         Asignacion objAsignacion = new Asignacion();
-        
 
-        
         //Estudiante estudanteBuscado = new Estudiante();
         //Curso cursoBuscado = new Curso();
         
@@ -180,11 +208,16 @@ public class MenuDocente extends javax.swing.JFrame {
             objAsignacion.setCedulaEstudiante(cedulaEstudiante);
             objAsignacion.setCodigoCurso(codigoCurso);
             objAsignacion.Agregar();
+            
             JOptionPane.showMessageDialog(null, "Se asigno el usuario " + cedulaEstudiante + " al curso seleccionado", "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
         } else { //existe, hay que editar
             objAsignacion.Actualizar();
+            
             JOptionPane.showMessageDialog(null, "Se actualizaron datos del estudiante " + cedulaEstudiante, "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
+            
         }
+        
+        estudianteActualizado.ActualizarPromedio(cedulaEstudiante);
         
         /*if (objAsignacion.getCedulaEstudiante() == 0) { //No existe la asignacion aun
             if (nota < 0 || nota > 100) {
@@ -210,6 +243,14 @@ public class MenuDocente extends javax.swing.JFrame {
             }
         }*/
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_docente_cerrarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_docente_cerrarsesionActionPerformed
+        // TODO add your handling code here:
+        InicioSesion ventana = new InicioSesion();
+        this.setVisible(false);
+        ventana.setVisible(true);
+        Principal.cadulaUsuarioLogeado = 0;
+    }//GEN-LAST:event_btn_docente_cerrarsesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,12 +288,14 @@ public class MenuDocente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_docente_cerrarsesion;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;

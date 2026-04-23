@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author MegaByte
  */
 public class Estudiante extends Usuario{
-    private double promedio;
+    private int promedio;
     
     public Estudiante(){};
     
@@ -25,11 +25,11 @@ public class Estudiante extends Usuario{
         this.promedio = 0;
     }
 
-    public double getPromedio() {
+    public int getPromedio() {
         return promedio;
     }
 
-    public void setPromedio(double promedio) {
+    public void setPromedio(int promedio) {
         this.promedio = promedio;
     }
     
@@ -79,6 +79,7 @@ public class Estudiante extends Usuario{
 
             if (resultado.next()) {
                 this.setCedula(resultado.getInt("cedulaEstudiante"));
+                this.setPromedio(resultado.getInt("promedio"));
             }
 
         } catch (SQLException e) {
@@ -86,5 +87,58 @@ public class Estudiante extends Usuario{
             e.printStackTrace();
             System.out.println("Eror trayendo estudiante: " + e);
         }
+    }
+    
+    public int calcularPromedio(int cedulaEstudiante) {
+        Conexion conectar = new Conexion();
+        int promedio = 0;
+        int sumaNotas = 0;
+        int cantidad = 0;
+
+        try {
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement(
+                    "SELECT notaEstudiante FROM asignacion WHERE cedulaEstudiante=?"
+            );
+            pstmt.setInt(1, cedulaEstudiante);
+
+            ResultSet resultado = pstmt.executeQuery();
+
+            while (resultado.next()) {
+                sumaNotas += resultado.getInt("notaEstudiante");
+                cantidad++;
+            }
+
+            if (cantidad > 0) {
+                promedio = (int) sumaNotas / cantidad;
+            }
+        
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error calculando promedio: " + e);
+            return 0;
+        }
+        return promedio;
+    }
+    
+     public void ActualizarPromedio(int cedulaEstudiante) {
+      Conexion conectar= new Conexion();
+      int promedio = calcularPromedio(cedulaEstudiante);
+       try {
+           String sql = "UPDATE estudiante set promedio=? WHERE cedulaEstudiante=?";
+    
+            PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql); 
+            pstmt.setInt(1, promedio);
+            pstmt.setInt(2, cedulaEstudiante);
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+            "USUARIO ACTUALIZADO","INFORMACION",
+            JOptionPane.INFORMATION_MESSAGE);
+       } 
+       catch (SQLException e) 
+        {
+            e.printStackTrace();
+            System.out.println("Error de edición: " + e);
+        }
+    
     }
 }

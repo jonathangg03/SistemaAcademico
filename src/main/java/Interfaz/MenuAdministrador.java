@@ -9,6 +9,7 @@ import Logica.Docente;
 import Logica.Estudiante;
 import Logica.Usuario;
 import Logica.Curso;
+import Logica.Principal;
 
 /**
  *
@@ -83,6 +84,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         txt_eliminarcurso_codigo = new javax.swing.JTextField();
         btn_eliminarCurso = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        btn_administracion_cerrarsesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,7 +159,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(btn_crearUsuario)))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +228,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(308, 308, 308)
                         .addComponent(btn_editarUsuario)))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,7 +277,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(235, 235, 235)
                         .addComponent(btn_eliminarUsuario)))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +335,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(374, 374, 374)
                         .addComponent(btn_crearCurso)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,7 +386,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(379, 379, 379)
                         .addComponent(btn_editarCurso)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,7 +430,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(147, Short.MAX_VALUE)
+                .addContainerGap(208, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,6 +454,32 @@ public class MenuAdministrador extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Eliminar curso", jPanel7);
+
+        btn_administracion_cerrarsesion.setText("Cerrar sesion");
+        btn_administracion_cerrarsesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_administracion_cerrarsesionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(262, 262, 262)
+                .addComponent(btn_administracion_cerrarsesion, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(274, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(247, 247, 247)
+                .addComponent(btn_administracion_cerrarsesion, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(262, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Cerrar Sesión", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -573,6 +602,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
         cursoNuevo.Actualizar(codigoABuscar);
     }//GEN-LAST:event_btn_editarCursoActionPerformed
 
+    private void btn_administracion_cerrarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administracion_cerrarsesionActionPerformed
+        InicioSesion ventana = new InicioSesion();
+        this.setVisible(false);
+        ventana.setVisible(true);
+        Principal.cadulaUsuarioLogeado = 0;        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_administracion_cerrarsesionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -609,6 +645,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_administracion_cerrarsesion;
     private javax.swing.JButton btn_crearCurso;
     private javax.swing.JButton btn_crearUsuario;
     private javax.swing.JButton btn_editarCurso;
@@ -632,6 +669,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

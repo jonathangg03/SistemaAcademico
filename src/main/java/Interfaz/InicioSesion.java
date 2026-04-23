@@ -9,6 +9,7 @@ import Logica.Docente;
 import Logica.Estudiante;
 import Logica.Usuario;
 import javax.swing.JOptionPane;
+import Logica.Principal;
 /**
  *
  * @author MegaByte
@@ -105,7 +106,7 @@ public class InicioSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         MenuAdministrador menuAdmin = new MenuAdministrador();
         MenuDocente menuDocente = new MenuDocente();
-        MenuEstudiante menuEstudiante = new MenuEstudiante();
+        
         
         int cedulaUsuario = Integer.parseInt(txt_cedulaUsuario.getText());
         String contrasena = txtContrasena.getText();
@@ -125,6 +126,9 @@ public class InicioSesion extends javax.swing.JFrame {
             System.out.println("cedula Estdiante: " + estudianteEncontrado.getCedula());
             System.out.println("cedula Admin: " + adminEncontrado.getCedula());
             System.out.println("cedula Docente: " + docenteEncontrado.getCedula());
+            Principal.cadulaUsuarioLogeado = cedulaUsuario;
+            this.setVisible(false);
+            MenuEstudiante menuEstudiante = new MenuEstudiante(Principal.cadulaUsuarioLogeado);
             if (estudianteEncontrado.getCedula() > 0) {
                 menuEstudiante.setVisible(true);
             }
@@ -137,7 +141,12 @@ public class InicioSesion extends javax.swing.JFrame {
                 menuAdmin.setVisible(true);
             }
 
-            this.setVisible(false);
+            //this.setVisible(false);
+            
+            
+            
+            System.out.println("Usuario Logeado en login: " + Principal.cadulaUsuarioLogeado);
+            
         } else {
             JOptionPane.showMessageDialog(null,
             "Cedula o contraseña erroneas","Error",

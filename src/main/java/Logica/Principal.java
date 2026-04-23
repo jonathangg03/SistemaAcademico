@@ -9,6 +9,8 @@ import Interfaz.InicioSesion;
  * @author MegaByte
  */
 public class Principal {
+    public static int cadulaUsuarioLogeado = 0;
+    
     public static void main(String[] args) {
         InicioSesion panta = new InicioSesion(); //Para que al darle play exista la pantalla
         panta.setVisible(true); //Hacemos visible la pantalla
