@@ -130,7 +130,7 @@ public class Curso {
     public void Actualizar(int codigo) {
         Conexion conectar = new Conexion();
         try {
-            String sql = "UPDATE curso set nombre=?, cedulaDocente=?, WHERE codigo=?";
+            String sql = "UPDATE curso set nombre=?, cedulaDocente=? WHERE codigo=?";
 
             PreparedStatement pstmt = conectar.Conectar().prepareStatement(sql);
             pstmt.setString(1, getNombreCurso());

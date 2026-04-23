@@ -53,7 +53,7 @@ public class MenuDocente extends javax.swing.JFrame {
 
         jLabel1.setText("Código del curso:");
 
-        jLabel2.setText("Código del estudiante:");
+        jLabel2.setText("Cédula del estudiante:");
 
         jLabel3.setText("Nota del curso:");
 
@@ -79,11 +79,10 @@ public class MenuDocente extends javax.swing.JFrame {
                             .addComponent(txt_gestionarestudiante_codigocurso, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_gestionarestudiante_notacurso, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)
-                                .addComponent(txt_gestionarestudiante_codigoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))))
+                            .addComponent(txt_gestionarestudiante_notacurso, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(txt_gestionarestudiante_codigoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addComponent(jButton1)))
@@ -242,6 +241,10 @@ public class MenuDocente extends javax.swing.JFrame {
                 }
             }
         }*/
+        txt_gestionarestudiante_asistenciacurso.setText("");
+        txt_gestionarestudiante_codigoEstudiante.setText("");
+        txt_gestionarestudiante_codigocurso.setText("");
+        txt_gestionarestudiante_notacurso.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_docente_cerrarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_docente_cerrarsesionActionPerformed

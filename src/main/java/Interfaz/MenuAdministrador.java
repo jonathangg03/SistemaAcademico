@@ -526,6 +526,10 @@ public class MenuAdministrador extends javax.swing.JFrame {
             break;
         }
         usuarioNuevo.Listar(tbl_usuarios);
+        txt_crearusuario_cedula.setText("");
+        txt_crearusuario_nombrecompleto.setText("");
+        txt_crearusuario_correo.setText("");
+        txt_crearusuario_contrasena.setText("");
     }//GEN-LAST:event_btn_crearUsuarioActionPerformed
 
     private void txt_eliminarcurso_codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_eliminarcurso_codigoActionPerformed
@@ -551,6 +555,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
         adminAEliminar.eliminar();
         usuarioAEliminar.eliminar();
         usuarioNuevo.Listar(tbl_usuarios);
+        
+        txt_eliminarusuario_cedula.setText("");
     }//GEN-LAST:event_btn_eliminarUsuarioActionPerformed
 
     private void btn_eliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarCursoActionPerformed
@@ -559,6 +565,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         Curso cursoAEliminar = new Curso();
         cursoAEliminar.eliminar(curso);
         cursoNuevo.Listar(tbl_cursos);
+        txt_eliminarcurso_codigo.setText("");
     }//GEN-LAST:event_btn_eliminarCursoActionPerformed
 
     private void btn_crearCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearCursoActionPerformed
@@ -569,6 +576,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
         cursoNuevo.setNombreCurso(nombreCurso);
         cursoNuevo.Agregar();
         cursoNuevo.Listar(tbl_cursos);
+        txt_crearcurso_cedulaDocente.setText("");
+        txt_crearcurso_nombre.setText("");
     }//GEN-LAST:event_btn_crearCursoActionPerformed
 
     private void tbl_usuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_usuariosMouseClicked
@@ -589,6 +598,11 @@ public class MenuAdministrador extends javax.swing.JFrame {
         
         usuarioNuevo.Actualizar();
         usuarioNuevo.Listar(tbl_usuarios);
+
+        txt_editarusuario_cedula.setText("");
+        txt_editarusuario_contrasena.setText("");
+        txt_editarusuario_correo.setText("");
+        txt_editarusuario_nombrecompleto.setText("");
     }//GEN-LAST:event_btn_editarUsuarioActionPerformed
 
     private void btn_editarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCursoActionPerformed
@@ -600,6 +614,12 @@ public class MenuAdministrador extends javax.swing.JFrame {
         cursoNuevo.setCedulaDocente(cedulaDocente);
         cursoNuevo.setNombreCurso(nombreCurso);
         cursoNuevo.Actualizar(codigoABuscar);
+        
+        cursoNuevo.Listar(tbl_cursos);
+        
+        txt_editarcurso_codigocurso.setText("");
+        txt_editarcurso_codigodocente.setText("");
+        txt_editarcurso_nombre.setText("");
     }//GEN-LAST:event_btn_editarCursoActionPerformed
 
     private void btn_administracion_cerrarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administracion_cerrarsesionActionPerformed
